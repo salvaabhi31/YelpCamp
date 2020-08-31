@@ -1,0 +1,43 @@
+ <%- include("../partials/header") %>
+  
+   
+      <header class="jumbotron">
+          <div>
+             <h1 class="display-4">Welcome to our campground!!</h1>
+             <p class="lead">Let's Explore!</p>
+             <hr class="my-4">
+             <a class="btn btn-primary btn-lg" href="/campgrounds/new" role="button">Add New Campground</a>
+           <p>
+              <form action="/campgrounds" method="GET" class="form-inline" id="campground-search">
+                <div class="form-group">
+                  <input type="text" name="search" placeholder="Campground search..." class="form-control">
+                </div>
+                <button class="btn btn-sm btn-success m-2">Submit</button>
+              </form>
+              
+             </p>
+            
+          </div>
+      </header>
+          
+     <div class="row text-center flex-wrap" id="campground-grid">
+          <% campgrounds.forEach(function(campground){ %>
+                            <div class="col-md-3">
+                               <div class="card-deck">
+                                   <div class="card" style="width: 18rem;">
+                                         <img src="<%= campground.image %>" class="card-img-top" alt="Card image cap">
+                                          <div class="card-body">
+                                              <h5 class="card-title"><%= campground.name %></h5>
+                                              <a href="/campgrounds/<%= campground._id %>" class="btn btn-success btn-sm">More Info</a>
+                                          </div>
+                                       </div>
+                               </div>
+                               
+                                    
+                            </div>
+                <% }); %>
+           </div> 
+   
+
+ 
+   <%- include("../partials/footer") %>
